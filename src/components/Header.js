@@ -2,7 +2,12 @@ import React from 'react';
 import {
     Link
 } from "react-router-dom";
+import { useAuth } from '../customHooks/useAuth';
+
+
 const Header = () => {
+    const {signOut, user} = useAuth()
+    console.log("user from header.js", user);
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container">
@@ -22,7 +27,7 @@ const Header = () => {
                             <Link className="nav-link" to="/profile">Profile</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Logout</Link>
+                            <Link className="nav-link" onClick={signOut} to="#">Logout</Link>
                         </li>
                         
                     </ul>
